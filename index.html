@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>temanPelihara — Beli, Adopsi, Rawat &amp; Konsultasi Anabul</title>
+<meta name="description" content="Beli, adopsi, hibah, rawat, sampai konsultasi dokter hewan untuk anabulmu. Ramah pemula, cocok anak kos, ongkir dihitung otomatis.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23FFF1EC'/%3E%3Cg fill='%23F04E37'%3E%3Cellipse cx='16' cy='21' rx='7' ry='6'/%3E%3Cellipse cx='8.5' cy='13' rx='3' ry='4'/%3E%3Cellipse cx='14' cy='9.5' rx='2.7' ry='3.7'/%3E%3Cellipse cx='20' cy='9.5' rx='2.7' ry='3.7'/%3E%3Cellipse cx='24.5' cy='13' rx='3' ry='4'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  window.TP_FALLBACK = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="#FFEFEA"/><g fill="#F7B4A5"><circle cx="400" cy="335" r="72"/><circle cx="296" cy="228" r="32"/><circle cx="358" cy="186" r="32"/><circle cx="442" cy="186" r="32"/><circle cx="504" cy="228" r="32"/></g></svg>');
+  if (window.tailwind) tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: { DEFAULT: '#1D74F5', dark: '#155ED0', soft: '#EAF2FE' },
+          coral: { DEFAULT: '#F25C78', deep: '#E94D68' },
+          tomato: '#F04E37',
+          ink: '#0F172A',
+          muted: '#64748B',
+          line: '#E8EDF6'
+        },
+        fontFamily: {
+          display: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+          sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  :root{
+    --blue:#1D74F5; --blue-dark:#155ED0; --coral:#F25C78; --coral-deep:#E94D68;
+    --tomato:#F04E37; --ink:#0F172A; --muted:#64748B; --line:#E8EDF6;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:#fff;overflow-x:hidden}
+  .font-display{font-family:'Plus Jakarta Sans','Inter',system-ui,sans-serif}
+  .hide{display:none !important}
+  @media (max-width: 399px){ .brand-text{display:none} }
+  .hero-glow{position:absolute;inset:0;pointer-events:none;background:
+    radial-gradient(780px 500px at 4% -8%, #FFEAE5 0%, rgba(255,246,244,.9) 40%, rgba(255,255,255,0) 72%),
+    radial-gradient(520px 380px at 96% 4%, #FFF3F0 0%, rgba(255,255,255,0) 70%)}
+  .eyebrow{font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--tomato)}
+  .soft{box-shadow:0 22px 45px -30px rgba(15,23,42,.28), 0 4px 14px -10px rgba(15,23,42,.08)}
+  .soft-lg{box-shadow:0 40px 80px -50px rgba(15,23,42,.42), 0 10px 30px -24px rgba(15,23,42,.12)}
+  .arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 44px 44px;padding:10px;
+    background:linear-gradient(160deg,#FFDDD1 0%,#F9808F 46%,#E94D68 100%);
+    box-shadow:0 45px 85px -50px rgba(233,77,104,.8)}
+  .arch-inner{position:relative;height:100%;width:100%;overflow:hidden;border-radius:999px 999px 36px 36px;background:#FBC7BE}
+  .arch-inner img{height:100%;width:100%;object-fit:cover;object-position:34% 30%}
+  .float-a{animation:float 7s ease-in-out infinite}
+  .float-b{animation:float 8s ease-in-out 1.4s infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @media (prefers-reduced-motion: reduce){.float-a,.float-b{animation:none}}
+
+  .service-card{display:flex;flex-direction:column;align-items:flex-start;gap:9px;text-align:left;padding:18px;
+    border:1px solid var(--line);border-radius:26px;background:#fff;cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease}
+  .service-card:hover{transform:translateY(-4px);border-color:#D7E6FF;box-shadow:0 26px 42px -32px rgba(15,23,42,.4)}
+  .s-icon{display:grid;place-items:center;height:42px;width:42px;border-radius:999px;background:#EAF2FE;color:var(--blue);flex:none;transition:.25s ease}
+  .service-card.is-active{background:linear-gradient(150deg,#3B86FF 0%,#1D74F5 55%,#155ED0 100%);border-color:transparent;color:#fff;
+    box-shadow:0 30px 50px -26px rgba(29,116,245,.85)}
+  .service-card.is-active .s-icon{background:#fff;color:var(--blue)}
+  .service-card.is-active .s-desc{color:rgba(255,255,255,.8)}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border-radius:999px;border:1px solid var(--line);
+    background:#fff;padding:8px 13px;font-size:12.5px;font-weight:600;color:#475569;cursor:pointer;transition:.2s ease}
+  .chip:hover{border-color:#CBD9F2;color:var(--ink);background:#F8FAFF}
+  .chip.is-active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 14px 24px -16px rgba(29,116,245,.95)}
+
+  .item-card{display:flex;flex-direction:column;height:100%;background:#fff;border:1px solid var(--line);border-radius:28px;
+    overflow:hidden;transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease}
+  .item-card:hover{transform:translateY(-5px);border-color:#D9E7FF;box-shadow:0 34px 55px -38px rgba(15,23,42,.45)}
+  .item-card .thumb{position:relative;aspect-ratio:16/11;overflow:hidden;background:#F1F5FB}
+  .item-card .thumb img{height:100%;width:100%;object-fit:cover;transition:transform .6s ease}
+  .item-card:hover .thumb img{transform:scale(1.045)}
+  .tag{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:4px 9px;font-size:10.5px;font-weight:700;letter-spacing:.01em}
+  .tag-cat{background:rgba(255,255,255,.95);color:var(--ink);border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(6px)}
+  .tag-promo{background:var(--tomato);color:#fff}
+  .tag-trend{background:rgba(15,23,42,.85);color:#fff;backdrop-filter:blur(6px)}
+  .fav-btn{display:grid;place-items:center;height:34px;width:34px;border-radius:999px;background:rgba(255,255,255,.94);color:#334155;
+    border:1px solid rgba(255,255,255,.7);cursor:pointer;transition:.2s ease;backdrop-filter:blur(6px)}
+  .fav-btn:hover{color:var(--tomato);transform:scale(1.06)}
+  .fav-btn.is-active{color:var(--tomato)}
+  .fav-btn.is-active svg{fill:currentColor}
+  .fit-tag{font-size:10.5px;font-weight:700;border-radius:999px;padding:4px 8px;white-space:nowrap}
+  .fit-a{color:#0E7C57;background:#E8FBF2}
+  .fit-b{color:#155ED0;background:#EAF2FE}
+  .fit-c{color:#A16207;background:#FEF6E4}
+  .stars svg{fill:#FBBF24;color:#FBBF24;stroke-width:1}
+
+  .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;background:var(--blue);
+    color:#fff;font-weight:700;font-size:14px;padding:12px 22px;cursor:pointer;border:1px solid transparent;
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;box-shadow:0 16px 26px -18px rgba(29,116,245,.95)}
+  .btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px)}
+  .btn-primary:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  .btn-primary.btn-sm{padding:9px 14px;font-size:12px}
+  .btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;border:1px solid var(--line);
+    background:#fff;color:var(--ink);font-weight:700;font-size:13px;padding:11px 18px;cursor:pointer;transition:.2s ease;text-decoration:none}
+  .btn-outline:hover{border-color:#C9D8F1;background:#F8FAFF}
+  .btn-soft{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;background:#FFF1EC;color:var(--tomato);
+    border:1px solid #FFDCD2;font-weight:700;font-size:13px;padding:11px 18px;cursor:pointer;transition:.2s ease}
+  .btn-soft:hover{background:#FFE6DD}
+
+  .lbl{display:block;font-size:11.5px;font-weight:700;color:#334155;margin-bottom:6px}
+  .field{width:100%;border:1px solid var(--line);background:#F9FBFF;border-radius:16px;padding:11px 14px;font-size:13.5px;color:var(--ink);
+    transition:.2s ease;font-family:inherit}
+  .field::placeholder{color:#94A3B8}
+  .field:focus{outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(29,116,245,.12)}
+  select.field{appearance:none;background-image:none;cursor:pointer}
+  textarea.field{resize:vertical;min-height:74px}
+
+  .role-btn{border:1px solid var(--line);border-radius:18px;padding:10px 12px;text-align:left;background:#fff;color:#334155;
+    cursor:pointer;transition:.2s ease;display:flex;align-items:center;gap:9px}
+  .role-btn.is-active{border-color:var(--blue);background:#F2F7FF;color:var(--blue);box-shadow:0 0 0 3px rgba(29,116,245,.1)}
+  .auth-tab{border-radius:999px;padding:9px;font-size:13px;font-weight:700;color:#64748B;cursor:pointer;transition:.2s ease}
+  .auth-tab.is-active{background:#fff;color:var(--blue);box-shadow:0 4px 14px -8px rgba(15,23,42,.4)}
+  .mini-toggle{font-size:10px;font-weight:800;padding:5px 9px;border-radius:999px;border:1px solid var(--line);color:#64748B;
+    background:#fff;white-space:nowrap;cursor:pointer;transition:.2s ease}
+  .mini-toggle:hover{border-color:#CBD9F2;color:var(--ink)}
+  .mini-toggle.is-on{background:#E8FBF2;border-color:#BBF0DA;color:#0E7C57}
+
+  .modal{position:fixed;inset:0;z-index:60;display:none;align-items:flex-end;justify-content:center}
+  @media (min-width:640px){.modal{align-items:center;padding:24px}}
+  .modal.is-open{display:flex}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.46);backdrop-filter:blur(6px);animation:fade .2s ease}
+  .modal-panel{position:relative;width:100%;max-width:var(--panel-w,560px);max-height:93vh;overflow-y:auto;background:#fff;
+    border-radius:32px 32px 0 0;box-shadow:0 40px 90px -30px rgba(15,23,42,.55);animation:rise .32s cubic-bezier(.2,.9,.3,1)}
+  @media (min-width:640px){.modal-panel{border-radius:32px;max-height:88vh}}
+  .modal-x{position:absolute;right:12px;top:12px;z-index:10;display:grid;place-items:center;height:34px;width:34px;border-radius:999px;
+    background:rgba(255,255,255,.92);color:#334155;border:1px solid rgba(255,255,255,.6);cursor:pointer;transition:.2s ease;backdrop-filter:blur(6px)}
+  .modal-x:hover{background:#fff;color:var(--ink)}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+  .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+
+  #toastHost{position:fixed;top:86px;right:16px;z-index:80;display:flex;flex-direction:column;gap:10px;
+    width:min(336px,calc(100vw - 32px));pointer-events:none}
+  .toast{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px 14px;
+    box-shadow:0 24px 40px -22px rgba(15,23,42,.45);animation:toastIn .28s ease;pointer-events:auto}
+  .toast.out{animation:toastOut .24s ease forwards}
+  .toast-icon{display:grid;place-items:center;height:30px;width:30px;border-radius:999px;flex:none}
+  .toast-success .toast-icon{background:#E8FBF2;color:#0E9F6E}
+  .toast-error .toast-icon{background:#FFECE7;color:var(--tomato)}
+  .toast-info .toast-icon{background:#EAF2FE;color:var(--blue)}
+  @keyframes toastIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+  @keyframes toastOut{to{opacity:0;transform:translateX(26px)}}
+
+  .map-dots{background-image:radial-gradient(#BFD6FF 1.1px, transparent 1.1px);background-size:15px 15px}
+  .soft-chip{display:inline-flex;align-items:center;gap:5px;border-radius:999px;background:#F4F7FD;border:1px solid #E8EEF8;
+    padding:5px 10px;font-size:11px;font-weight:600;color:#475569}
+  .open-pill{display:inline-flex;align-items:center;gap:5px;border-radius:999px;background:#E8FBF2;color:#0E7C57;
+    padding:4px 9px;font-size:10.5px;font-weight:800}
+  .open-dot{height:6px;width:6px;border-radius:999px;background:#0E9F6E;box-shadow:0 0 0 3px rgba(14,159,110,.16)}
+  .info-box{border:1px solid var(--line);background:#fff;border-radius:18px;padding:11px 12px}
+  .social-btn{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:8px 12px;font-size:11.5px;font-weight:800;
+    color:#fff;text-decoration:none;transition:transform .2s ease, filter .2s ease}
+  .social-btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+  .social-wa{background:#25D366}
+  .social-ig{background:linear-gradient(120deg,#F58529,#DD2A7B 55%,#8134AF)}
+  .social-tt{background:#0F172A}
+  .clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  :focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+  section[id]{scroll-margin-top:88px}
+</style>
+</head>
+<body class="bg-white text-ink antialiased">
+<!-- ============ NAVBAR ============ -->
+<header class="sticky top-0 z-40 border-b border-white/70 bg-white/85 backdrop-blur-xl">
+  <div class="mx-auto flex h-[72px] max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+    <a href="#beranda" class="flex shrink-0 items-center gap-2.5" aria-label="temanPelihara, ke beranda">
+      <span class="grid h-10 w-10 place-items-center rounded-2xl bg-[#FFF1EC] text-tomato">
+        <i data-lucide="paw-print" class="h-5 w-5"></i>
+      </span>
+      <span class="brand-text font-display text-[19px] font-extrabold tracking-tight text-ink">teman<span class="text-brand">Pelihara</span></span>
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
+      <a href="#beranda" class="rounded-full px-4 py-2 text-[13px] font-semibold text-muted transition hover:bg-[#F5F8FE] hover:text-ink">Beranda</a>
+      <a href="#layanan" class="rounded-full px-4 py-2 text-[13px] font-semibold text-muted transition hover:bg-[#F5F8FE] hover:text-ink">6 Layanan</a>
+      <a href="#ongkir" class="rounded-full px-4 py-2 text-[13px] font-semibold text-muted transition hover:bg-[#F5F8FE] hover:text-ink">Lokasi &amp; Ongkir</a>
+      <a href="#katalog" class="rounded-full px-4 py-2 text-[13px] font-semibold text-muted transition hover:bg-[#F5F8FE] hover:text-ink">Katalog</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button id="favBtn" type="button" class="relative grid h-10 w-10 place-items-center rounded-full border border-line bg-white text-ink transition hover:border-[#FFCFC5] hover:text-tomato" aria-label="Buka favorit saya" title="Favorit saya">
+        <i data-lucide="heart" class="h-[18px] w-[18px]"></i>
+        <span id="favCount" class="absolute -right-1 -top-1 grid h-5 min-w-[20px] place-items-center rounded-full bg-tomato px-1 text-[10px] font-extrabold text-white">0</span>
+      </button>
+
+      <div class="hidden items-center gap-2 md:flex">
+        <button id="adminBtn" type="button" class="js-admin hide btn-outline !px-4 !py-2.5 !text-xs">
+          <i data-lucide="shield-check" class="h-4 w-4 text-brand"></i> Panel Admin
+        </button>
+        <button id="logoutBtn" type="button" class="js-logout btn-outline !px-4 !py-2.5 !text-xs" title="Keluar dari akun">
+          <i data-lucide="log-out" class="h-4 w-4"></i> Logout
+        </button>
+      </div>
+
+      <button id="authBtn" type="button" class="btn-primary btn-sm !px-3.5 sm:!px-5" aria-label="Masuk atau daftar">
+        <i data-lucide="user" class="h-4 w-4"></i>
+        <span class="sm:hidden">Masuk</span>
+        <span class="hidden sm:inline">Masuk / Daftar</span>
+      </button>
+
+      <div id="userChip" class="hide flex items-center gap-2 rounded-full border border-line bg-white py-1 pl-1 pr-3">
+        <span id="userAvatar" class="grid h-8 w-8 place-items-center rounded-full bg-brand-soft text-[11px] font-extrabold text-brand">T</span>
+        <span class="leading-tight">
+          <span id="userName" class="block max-w-[58px] truncate text-[12px] font-bold text-ink sm:max-w-[92px]">Teman</span>
+          <span id="userRole" class="block text-[9.5px] font-extrabold uppercase tracking-wider text-muted">User</span>
+        </span>
+      </div>
+
+      <button id="menuBtn" type="button" class="grid h-10 w-10 place-items-center rounded-full border border-line bg-white text-ink lg:hidden" aria-label="Buka menu navigasi" aria-expanded="false">
+        <i data-lucide="menu" class="h-5 w-5"></i>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="hide border-t border-line bg-white px-4 pb-4 pt-2 lg:hidden">
+    <a href="#beranda" class="mobile-link block rounded-xl px-3 py-2.5 text-[13px] font-semibold text-muted hover:bg-[#F6F9FF] hover:text-ink">Beranda</a>
+    <a href="#layanan" class="mobile-link block rounded-xl px-3 py-2.5 text-[13px] font-semibold text-muted hover:bg-[#F6F9FF] hover:text-ink">6 Layanan</a>
+    <a href="#ongkir" class="mobile-link block rounded-xl px-3 py-2.5 text-[13px] font-semibold text-muted hover:bg-[#F6F9FF] hover:text-ink">Lokasi &amp; Ongkir</a>
+    <a href="#katalog" class="mobile-link block rounded-xl px-3 py-2.5 text-[13px] font-semibold text-muted hover:bg-[#F6F9FF] hover:text-ink">Katalog</a>
+    <div class="mt-2 flex gap-2">
+      <button id="adminBtnMobile" type="button" class="js-admin hide btn-outline flex-1 !py-2.5 !text-xs">
+        <i data-lucide="shield-check" class="h-4 w-4 text-brand"></i> Panel Admin
+      </button>
+      <button id="logoutBtnMobile" type="button" class="js-logout btn-outline flex-1 !py-2.5 !text-xs">
+        <i data-lucide="log-out" class="h-4 w-4"></i> Logout
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section id="beranda" class="relative overflow-x-clip pb-4 pt-8 sm:pt-12">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-14 px-4 pb-8 sm:px-6 lg:grid-cols-[1.03fr_0.97fr] lg:gap-10 lg:px-8">
+
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full border border-[#FFD9D2] bg-white/85 px-3.5 py-2 text-[11.5px] font-bold text-[#B23A28] shadow-[0_10px_24px_-20px_rgba(240,78,55,.9)]">
+          <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
+          Untuk remaja, mahasiswa, &amp; kamu yang butuh teman
+        </span>
+
+        <h1 class="mt-5 font-display text-[34px] font-extrabold leading-[1.06] tracking-tight text-ink sm:text-[46px] lg:text-[54px]">
+          Teman Peliharaan
+          <span class="mx-1.5 inline-grid h-[34px] w-[34px] translate-y-[-2px] place-items-center rounded-full bg-[#FFF1EC] align-middle text-tomato sm:h-[42px] sm:w-[42px]">
+            <i data-lucide="paw-print" class="h-[17px] w-[17px] sm:h-5 sm:w-5"></i>
+          </span>
+          <br class="hidden sm:block">
+          Untuk Hari-Harimu <span class="relative whitespace-nowrap text-brand">Lebih Hangat<svg class="absolute -bottom-1 left-0 w-full text-[#FFC7BB]" viewBox="0 0 200 10" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 7C40 2 74 2 108 5.5C142 9 168 8 198 3" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span>
+        </h1>
+
+        <p class="mt-5 max-w-xl text-[14.5px] leading-relaxed text-muted sm:text-[15px]">
+          Beli, adopsi, hibah, rawat, sampai tanya dokter hewan — semua dalam satu tempat.
+          Dipandu langkah demi langkah, ramah untuk pemula, dan pas untuk anak kos yang sibuk.
+        </p>
+
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <button type="button" data-scroll="katalog" class="btn-primary !px-6 !py-3.5">
+            Mulai Cari Teman <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </button>
+          <button type="button" id="heroGiveBtn" class="flex items-center gap-2.5 rounded-full border border-line bg-white py-1.5 pl-1.5 pr-5 text-[13px] font-bold text-ink transition hover:border-[#FFD2C8] hover:shadow-[0_18px_30px_-26px_rgba(15,23,42,.5)]">
+            <span class="grid h-11 w-11 place-items-center rounded-full bg-[#FFF1EC] text-tomato"><i data-lucide="heart-handshake" class="h-5 w-5"></i></span>
+            Memberi / Hibah Hewan
+          </button>
+        </div>
+
+        <dl class="mt-9 flex flex-wrap items-start gap-x-6 gap-y-4 sm:gap-x-7">
+          <div class="pr-6 sm:border-r sm:border-line">
+            <dt class="font-display text-xl font-extrabold text-ink">2K+</dt>
+            <dd class="text-[11.5px] text-muted">Hewan &amp; Perlengkapan</dd>
+          </div>
+          <div class="pr-6 sm:border-r sm:border-line">
+            <dt class="font-display text-xl font-extrabold text-ink">10K+</dt>
+            <dd class="text-[11.5px] text-muted">Teman Terbantu</dd>
+          </div>
+          <div>
+            <dt class="font-display text-xl font-extrabold text-ink">30 mnt</dt>
+            <dd class="text-[11.5px] text-muted">Estimasi Antar Aman</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-[330px] pb-4 sm:max-w-[390px] lg:max-w-[430px]">
+        <div class="arch">
+          <div class="arch-inner">
+            <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&amp;fit=crop&amp;w=900&amp;q=80&amp;fm=jpg" alt="Pemilik hewan tersenyum hangat sambil membelai kucing peliharaannya" onerror="this.onerror=null;this.src=window.TP_FALLBACK">
+            <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#B93448]/45 to-transparent"></div>
+          </div>
+
+          <div class="absolute -right-1 top-7 z-10 flex items-center gap-2 rounded-2xl bg-white/95 px-3 py-2 shadow-[0_18px_35px_-22px_rgba(15,23,42,.55)] backdrop-blur sm:-right-5 sm:top-9 float-a">
+            <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-soft text-brand"><i data-lucide="badge-check" class="h-4 w-4"></i></span>
+            <span class="leading-tight">
+              <span class="block text-[11px] font-extrabold text-ink">Dokter &amp; Toko</span>
+              <span class="block text-[10px] font-semibold text-muted">Terpercaya</span>
+            </span>
+          </div>
+
+          <div class="absolute -right-2 top-[43%] z-10 w-[176px] rounded-2xl bg-white/95 p-3 shadow-[0_24px_45px_-25px_rgba(15,23,42,.55)] backdrop-blur sm:-right-7 sm:w-[196px] float-b">
+            <div class="stars flex items-center gap-0.5">
+              <i data-lucide="star" class="h-3 w-3"></i><i data-lucide="star" class="h-3 w-3"></i><i data-lucide="star" class="h-3 w-3"></i><i data-lucide="star" class="h-3 w-3"></i><i data-lucide="star" class="h-3 w-3"></i>
+            </div>
+            <p class="mt-1.5 text-[11px] font-semibold leading-snug text-ink">“Kitten sehat, dianter 30 menit. Nggak nyesel!”</p>
+            <div class="mt-2 flex items-center gap-1.5">
+              <span class="grid h-5 w-5 place-items-center rounded-full bg-[#FFE9E3] text-[8px] font-extrabold text-tomato">R</span>
+              <span class="text-[9.5px] font-semibold text-muted">Rani · Mahasiswa</span>
+            </div>
+          </div>
+
+          <button type="button" data-scroll="ongkir" class="absolute bottom-4 left-1/2 z-10 flex w-[calc(100%-32px)] -translate-x-1/2 items-center justify-center gap-2 rounded-full bg-white px-4 py-3 text-[11.5px] font-extrabold text-ink shadow-[0_22px_40px_-20px_rgba(15,23,42,.55)] transition hover:-translate-y-0.5 sm:w-auto sm:text-[12px]">
+            <i data-lucide="map-pin" class="h-4 w-4 text-tomato"></i> Cek Estimasi Ongkir Rumah
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kartu testimoni melayang -->
+    <div class="relative z-10 mx-auto mt-2 max-w-5xl px-4 sm:px-6">
+      <div class="soft-lg flex flex-col items-center gap-5 rounded-[32px] border border-line bg-white p-4 sm:flex-row sm:rounded-full sm:p-3 sm:pr-7">
+        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&amp;fit=crop&amp;w=320&amp;q=80&amp;fm=jpg" alt="Dua anak kucing berbaring bersama" class="h-32 w-full rounded-[24px] object-cover sm:h-20 sm:w-20 sm:shrink-0 sm:rounded-full" onerror="this.onerror=null;this.src=window.TP_FALLBACK">
+        <div class="flex-1 text-center sm:text-left">
+          <div class="stars flex items-center justify-center gap-0.5 sm:justify-start">
+            <i data-lucide="star" class="h-3.5 w-3.5"></i><i data-lucide="star" class="h-3.5 w-3.5"></i><i data-lucide="star" class="h-3.5 w-3.5"></i><i data-lucide="star" class="h-3.5 w-3.5"></i><i data-lucide="star" class="h-3.5 w-3.5"></i>
+          </div>
+          <p class="mt-1.5 text-[13px] font-medium leading-relaxed text-ink">“Baru pertama kali pelihara kucing dan tetap bisa kuliah. Kittennya sehat, ongkirnya jelas, dokternya fast response — rasanya nggak sendirian lagi.”</p>
+          <p class="mt-1 text-[11px] text-muted">Dinda Ayu · Mahasiswa semester 4, kos di Jakarta Selatan</p>
+        </div>
+        <div class="hidden shrink-0 flex-col items-center rounded-2xl bg-[#F5F8FF] px-4 py-2 sm:flex">
+          <span class="font-display text-lg font-extrabold text-ink">4.9</span>
+          <span class="text-[10px] text-muted">2.480 ulasan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 PILAR LAYANAN ============ -->
+  <section id="layanan" class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <span class="eyebrow">6 Pilar Layanan</span>
+        <h2 class="mt-2 font-display text-[26px] font-extrabold leading-tight tracking-tight text-ink sm:text-[34px]">
+          Semua kebutuhan anabul, dalam satu genggaman
+        </h2>
+      </div>
+      <p class="max-w-sm text-[13px] leading-relaxed text-muted">
+        Pilih salah satu pilar untuk menyaring katalog. Klik lagi untuk melihat semua item.
+      </p>
+    </div>
+
+    <div id="serviceGrid" class="mt-7 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-6"></div>
+  </section>
+
+  <!-- ============ LOKASI TOKO & ONGKIR ============ -->
+  <section id="ongkir" class="mx-auto max-w-7xl px-4 pb-4 sm:px-6 lg:px-8">
+    <div class="relative overflow-hidden rounded-[32px] border border-line bg-white p-5 soft-lg sm:p-7 lg:rounded-[36px] lg:p-9">
+      <div class="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[#FFF1EC] opacity-70 blur-2xl" aria-hidden="true"></div>
+      <div class="relative">
+        <div class="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <span class="eyebrow">Lokasi &amp; Ongkir</span>
+            <h2 class="mt-2 font-display text-[24px] font-extrabold tracking-tight text-ink sm:text-[30px]">Antar aman sampai depan pintu</h2>
+          </div>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-[#E8FBF2] px-3 py-1.5 text-[10.5px] font-extrabold text-[#0E7C57]">
+            <span class="open-dot"></span> Hitung otomatis
+          </span>
+        </div>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-[1fr_1.05fr] lg:gap-8">
+          <div class="rounded-[26px] border border-line bg-white p-3.5">
+            <div class="relative h-28 overflow-hidden rounded-2xl bg-[#EAF2FF] sm:h-32">
+              <div class="map-dots absolute inset-0 opacity-80"></div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-[#D9E8FF] via-transparent to-[#FFEDE8]"></div>
+              <span class="absolute left-1/2 top-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white text-tomato shadow-[0_14px_24px_-14px_rgba(15,23,42,.6)]">
+                <i data-lucide="store" class="h-5 w-5"></i>
+              </span>
+              <span class="absolute bottom-2.5 left-2.5 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold text-ink shadow">
+                <i data-lucide="map-pin" class="h-3 w-3 text-tomato"></i> Toko utama
+              </span>
+            </div>
+            <div class="mt-4 px-1 pb-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 id="storeName" class="font-display text-[15px] font-extrabold text-ink">TemanPelihara Pet Corner</h3>
+                <span class="open-pill"><span class="open-dot"></span> Buka</span>
+              </div>
+              <p id="storeAddress" class="mt-1.5 text-[11.5px] leading-relaxed text-muted">Jl. Kemuning Raya No. 24, Kel. Cipete Utara, Jakarta Selatan 12150</p>
+              <div class="mt-3 flex flex-wrap gap-1.5">
+                <span class="soft-chip"><i data-lucide="clock" class="h-3 w-3 text-brand"></i> 08.00–21.00 WIB</span>
+                <span class="soft-chip"><i data-lucide="truck" class="h-3 w-3 text-brand"></i> Kurir khusus hewan</span>
+                <span class="soft-chip"><i data-lucide="shield-check" class="h-3 w-3 text-brand"></i> Hewan diasuransikan</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col justify-center gap-4">
+            <div>
+              <label for="areaSelect" class="lbl">Pilih area rumah / kos tujuan</label>
+              <div class="relative">
+                <select id="areaSelect" class="field !py-3 !text-[13px] font-semibold"></select>
+                <i data-lucide="chevron-down" class="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"></i>
+              </div>
+            </div>
+
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-[24px] bg-[#F1F7FF] p-4">
+                <div class="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-brand">
+                  <i data-lucide="clock" class="h-3.5 w-3.5"></i> Estimasi Waktu Antar
+                </div>
+                <p id="estTime" class="mt-2 font-display text-[26px] font-extrabold leading-none text-ink">30–45 mnt</p>
+                <p id="estTimeSub" class="mt-1 text-[11px] text-muted">Kurir Khusus Hewan</p>
+              </div>
+              <div class="rounded-[24px] bg-[#FFF3F0] p-4">
+                <div class="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-tomato">
+                  <i data-lucide="truck" class="h-3.5 w-3.5"></i> Estimasi Biaya Ongkir
+                </div>
+                <p id="estCost" class="mt-2 font-display text-[26px] font-extrabold leading-none text-ink">Rp13.000</p>
+                <p id="estCostSub" class="mt-1 text-[11px] text-muted">Tarif dasar + jarak</p>
+              </div>
+            </div>
+
+            <p id="tarifNote" class="text-[11px] leading-relaxed text-muted">
+              Hitungan otomatis: tarif dasar Rp8.000 + Rp2.000 per km.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KATALOG ============ -->
+  <section id="katalog" class="mx-auto max-w-7xl px-4 pb-20 pt-14 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <div class="max-w-xl">
+        <span class="eyebrow">Katalog</span>
+        <h2 class="mt-2 font-display text-[26px] font-extrabold tracking-tight text-ink sm:text-[34px]">Temukan teman barumu hari ini</h2>
+        <p class="mt-2 text-[13px] leading-relaxed text-muted">Semua item sudah dicek kondisi &amp; kesehatannya. Harga transparan, ongkir dihitung otomatis.</p>
+      </div>
+      <div class="flex w-full flex-col gap-2 sm:flex-row sm:items-center lg:w-auto">
+        <div class="relative w-full sm:w-[280px]">
+          <i data-lucide="search" class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted"></i>
+          <input id="searchInput" type="text" placeholder="Cari kucing, grooming, kandang..." class="field !rounded-full !py-3 pl-11 pr-10" aria-label="Cari item di katalog" autocomplete="off">
+          <button id="clearSearch" type="button" class="hide absolute right-2.5 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-full bg-[#EEF3FB] text-muted transition hover:bg-[#E2EAF7] hover:text-ink" aria-label="Hapus pencarian">
+            <i data-lucide="x" class="h-3.5 w-3.5"></i>
+          </button>
+        </div>
+        <button id="giveBtnTop" type="button" class="btn-primary whitespace-nowrap !rounded-full !py-3 !text-[12.5px]">
+          <i data-lucide="gift" class="h-4 w-4"></i> Pasang Info Memberi Hewan
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-6 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar" role="group" aria-label="Filter dan urutkan katalog">
+      <button type="button" data-chip="all" class="chip is-active"><i data-lucide="sliders-horizontal" class="h-3.5 w-3.5"></i> Semua</button>
+      <button type="button" data-chip="price-asc" class="chip"><i data-lucide="arrow-down-wide-narrow" class="h-3.5 w-3.5"></i> Harga: Terendah ke Termahal</button>
+      <button type="button" data-chip="price-desc" class="chip"><i data-lucide="arrow-up-narrow-wide" class="h-3.5 w-3.5"></i> Harga: Termahal ke Terendah</button>
+      <button type="button" data-chip="promo" class="chip"><i data-lucide="tag" class="h-3.5 w-3.5"></i> Promo</button>
+      <button type="button" data-chip="fav" class="chip"><i data-lucide="heart" class="h-3.5 w-3.5"></i> Favorit</button>
+      <button type="button" data-chip="trending" class="chip"><i data-lucide="trending-up" class="h-3.5 w-3.5"></i> Trending</button>
+    </div>
+
+    <div class="mt-4 flex flex-wrap items-center justify-between gap-2">
+      <p id="resultCount" aria-live="polite" class="text-[12px] font-semibold text-muted">Menampilkan 12 item</p>
+      <p class="text-[11px] text-muted">Klik ulang kartu layanan untuk menampilkan semua.</p>
+    </div>
+
+    <div id="catalogGrid" class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-line bg-[#FAFBFE] pb-28 pt-12">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-9 md:grid-cols-[1.5fr_1fr_1.1fr]">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="grid h-10 w-10 place-items-center rounded-2xl bg-[#FFF1EC] text-tomato"><i data-lucide="paw-print" class="h-5 w-5"></i></span>
+          <span class="font-display text-[18px] font-extrabold tracking-tight">teman<span class="text-brand">Pelihara</span></span>
+        </div>
+        <p class="mt-3 max-w-sm text-[12.5px] leading-relaxed text-muted">
+          Ruang hangat untuk membeli, mengadopsi, menghibahkan, dan merawat teman berbulu — tanpa ribet, tanpa sendirian.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a id="footWa" href="#" target="_blank" rel="noopener" class="social-btn social-wa"><i data-lucide="message-circle" class="h-4 w-4"></i> WhatsApp</a>
+          <a href="https://instagram.com/temanpelihara" target="_blank" rel="noopener" class="social-btn social-ig"><i data-lucide="instagram" class="h-4 w-4"></i> Instagram</a>
+          <a href="https://www.tiktok.com/@temanpelihara" target="_blank" rel="noopener" class="social-btn social-tt"><i data-lucide="music-2" class="h-4 w-4"></i> TikTok</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="font-display text-[13px] font-extrabold text-ink">Jelajahi</p>
+        <ul class="mt-3 space-y-2 text-[12.5px] text-muted">
+          <li><a href="#beranda" class="hover:text-ink">Beranda</a></li>
+          <li><a href="#layanan" class="hover:text-ink">6 Pilar Layanan</a></li>
+          <li><a href="#ongkir" class="hover:text-ink">Lokasi &amp; Estimasi Ongkir</a></li>
+          <li><a href="#katalog" class="hover:text-ink">Katalog Anabul</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="font-display text-[13px] font-extrabold text-ink">Butuh bantuan?</p>
+        <p class="mt-3 text-[12.5px] leading-relaxed text-muted">Chat tim kami lewat WhatsApp — rata-rata dibalas di bawah 5 menit pada jam operasional.</p>
+        <button type="button" id="footAuthBtn" class="btn-outline mt-3 !py-2.5 !text-[12px]"><i data-lucide="user" class="h-4 w-4"></i> Masuk / Daftar</button>
+      </div>
+    </div>
+
+    <div class="mt-9 flex flex-col items-center justify-between gap-2 border-t border-line pt-5 text-[11px] text-muted sm:flex-row">
+      <p>© 2026 temanPelihara · Demo interaktif satu halaman.</p>
+      <p>Sesi login &amp; favorit disimpan lokal di perangkatmu.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating shortcut media sosial -->
+<div class="fixed inset-x-0 bottom-4 z-40 flex justify-center px-4">
+  <div class="flex items-center gap-2 rounded-full border border-line bg-white/95 p-2 pl-3 shadow-[0_24px_50px_-24px_rgba(15,23,42,.5)] backdrop-blur-xl">
+    <span class="hidden pr-1 text-[10.5px] font-extrabold uppercase tracking-wide text-muted md:block">Butuh cepat?</span>
+    <a id="barWa" href="#" target="_blank" rel="noopener" class="social-btn social-wa" aria-label="Chat WhatsApp temanPelihara">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.35-.35.52-.53.17-.17.23-.3.35-.5.12-.2.06-.37-.06-.52-.12-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.5h-.56c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.15 11.89c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41Z"/></svg>
+      <span class="hidden sm:inline">WA</span>
+    </a>
+    <a href="https://instagram.com/temanpelihara" target="_blank" rel="noopener" class="social-btn social-ig" aria-label="Instagram temanPelihara">
+      <i data-lucide="instagram" class="h-4 w-4"></i> <span class="hidden sm:inline">IG</span>
+    </a>
+    <a href="https://www.tiktok.com/@temanpelihara" target="_blank" rel="noopener" class="social-btn social-tt" aria-label="TikTok temanPelihara">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true"><path d="M16.6 5.82A5.62 5.62 0 0 0 15.54 3h-3.2v12.1a2.36 2.36 0 1 1-1.68-2.26V9.56a5.6 5.6 0 1 0 4.88 5.54V8.9a8.8 8.8 0 0 0 4.06 1.02V6.72a5.5 5.5 0 0 1-3-0.9Z"/></svg>
+      <span class="hidden sm:inline">TikTok</span>
+    </a>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div id="toastHost" aria-live="polite" aria-atomic="false"></div>
+
+<!-- ============ MODAL: LOGIN / DAFTAR ============ -->
+<div id="authModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal-backdrop" data-close="authModal"></div>
+  <div class="modal-panel" style="--panel-w:456px">
+    <div class="relative p-5 sm:p-7">
+      <button type="button" class="modal-x" data-close="authModal" aria-label="Tutup"><i data-lucide="x" class="h-4 w-4"></i></button>
+
+      <div class="flex items-center gap-3 pr-8">
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#FFF1EC] text-tomato"><i data-lucide="paw-print" class="h-5 w-5"></i></span>
+        <div>
+          <h2 id="authTitle" class="font-display text-[18px] font-extrabold leading-tight text-ink">Selamat datang di temanPelihara</h2>
+          <p class="mt-0.5 text-[11.5px] text-muted">Masuk atau buat akun untuk mulai berteman.</p>
+        </div>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 gap-1 rounded-full bg-[#F2F6FD] p-1">
+        <button type="button" class="auth-tab is-active" data-authtab="login">Masuk</button>
+        <button type="button" class="auth-tab" data-authtab="register">Daftar Baru</button>
+      </div>
+
+      <form id="authForm" class="mt-4 space-y-3.5" novalidate>
+        <div id="nameField" class="hide">
+          <label class="lbl" for="authName">Nama lengkap</label>
+          <input id="authName" type="text" class="field" placeholder="Contoh: Rani Puspita" autocomplete="name">
+        </div>
+        <div>
+          <label class="lbl" for="authContact">Email / No. WhatsApp</label>
+          <input id="authContact" type="text" class="field" placeholder="rani@email.com atau 0812xxxxxxx" autocomplete="username">
+        </div>
+        <div>
+          <label class="lbl" for="authPass">Kata sandi</label>
+          <input id="authPass" type="password" class="field" placeholder="Minimal 6 karakter" autocomplete="current-password">
+        </div>
+        <div>
+          <span class="lbl">Masuk sebagai</span>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" class="role-btn is-active" data-role="User">
+              <i data-lucide="user" class="h-4 w-4 shrink-0"></i>
+              <span class="leading-tight">
+                <span class="block text-[11.5px] font-extrabold">User</span>
+                <span class="block text-[9.5px] font-semibold opacity-70">Pembeli / Adopter</span>
+              </span>
+            </button>
+            <button type="button" class="role-btn" data-role="Admin">
+              <i data-lucide="shield" class="h-4 w-4 shrink-0"></i>
+              <span class="leading-tight">
+                <span class="block text-[11.5px] font-extrabold">Admin</span>
+                <span class="block text-[9.5px] font-semibold opacity-70">Pengelola Toko</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div id="adminCodeField" class="hide">
+          <label class="lbl" for="authCode">Kode akses admin</label>
+          <input id="authCode" type="text" class="field" placeholder="ADMIN2026" autocomplete="off">
+          <p class="mt-1.5 text-[10.5px] text-muted">Kode demo: <span class="font-bold text-ink">ADMIN2026</span></p>
+        </div>
+        <button type="submit" id="authSubmit" class="btn-primary w-full !py-3">Masuk</button>
+      </form>
+
+      <div class="my-4 flex items-center gap-3 text-[10px] font-bold uppercase tracking-wider text-muted">
+        <span class="h-px flex-1 bg-line"></span> atau uji cepat <span class="h-px flex-1 bg-line"></span>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <button type="button" class="btn-outline !py-2.5 !text-[11.5px]" data-demo="User"><i data-lucide="user" class="h-3.5 w-3.5"></i> Demo User</button>
+        <button type="button" class="btn-outline !py-2.5 !text-[11.5px]" data-demo="Admin"><i data-lucide="shield-check" class="h-3.5 w-3.5"></i> Demo Admin</button>
+      </div>
+
+      <p class="mt-4 text-[10.5px] leading-relaxed text-muted">
+        Sesi login &amp; favorit disimpan lokal di perangkat ini (tanpa server). Kamu bisa menutup jendela ini dan lanjut melihat-lihat.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: DETAIL ITEM ============ -->
+<div id="detailModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+  <div class="modal-backdrop" data-close="detailModal"></div>
+  <div class="modal-panel" style="--panel-w:620px">
+    <div id="detailBody"></div>
+  </div>
+</div>
+
+<!-- ============ MODAL: MEMBERI / HIBAH ============ -->
+<div id="giveModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="giveTitle">
+  <div class="modal-backdrop" data-close="giveModal"></div>
+  <div class="modal-panel" style="--panel-w:520px">
+    <div class="relative p-5 sm:p-7">
+      <button type="button" class="modal-x" data-close="giveModal" aria-label="Tutup"><i data-lucide="x" class="h-4 w-4"></i></button>
+      <div class="flex items-start gap-3 pr-8">
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[#FFF1EC] text-tomato"><i data-lucide="gift" class="h-5 w-5"></i></span>
+        <div>
+          <h2 id="giveTitle" class="font-display text-[18px] font-extrabold leading-tight text-ink">Pasang info memberi hewan</h2>
+          <p class="mt-0.5 text-[11.5px] leading-relaxed text-muted">Hibahkan anabul ke orang yang tepat. Info langsung tampil di katalog kategori <span class="font-bold text-ink">Memberi</span>.</p>
+        </div>
+      </div>
+
+      <form id="giveForm" class="mt-5 space-y-3.5" novalidate>
+        <div>
+          <label class="lbl" for="giveName">Nama / jenis hewan</label>
+          <input id="giveName" type="text" class="field" placeholder="Contoh: Anak kucing domestik jantan, 2 bulan">
+        </div>
+        <div>
+          <label class="lbl" for="giveCondition">Kondisi / vaksin / alasan</label>
+          <textarea id="giveCondition" class="field" rows="3" placeholder="Sehat, aktif, sudah vaksin pertama. Alasan: pindah kota."></textarea>
+        </div>
+        <div>
+          <label class="lbl" for="givePickup">Lokasi penjemputan</label>
+          <input id="givePickup" type="text" class="field" placeholder="Contoh: Kos Melati, Cipete Utara (2,5 km dari toko)">
+        </div>
+        <button type="submit" class="btn-primary w-full !py-3"><i data-lucide="send" class="h-4 w-4"></i> Kirim Info ke Katalog</button>
+        <p class="text-center text-[10.5px] text-muted">Info ini akan muncul sebagai item gratis di kategori Memberi.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL: PANEL ADMIN ============ -->
+<div id="adminModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+  <div class="modal-backdrop" data-close="adminModal"></div>
+  <div class="modal-panel" style="--panel-w:760px">
+    <div class="relative p-5 sm:p-7">
+      <button type="button" class="modal-x" data-close="adminModal" aria-label="Tutup"><i data-lucide="x" class="h-4 w-4"></i></button>
+      <div class="flex items-start gap-3 pr-8">
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-soft text-brand"><i data-lucide="shield-check" class="h-5 w-5"></i></span>
+        <div>
+          <h2 id="adminTitle" class="font-display text-[18px] font-extrabold leading-tight text-ink">Panel Admin</h2>
+          <p class="mt-0.5 text-[11.5px] text-muted">Kelola katalog, promo, dan pengaturan toko.</p>
+        </div>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 gap-1 rounded-full bg-[#F2F6FD] p-1">
+        <button type="button" class="auth-tab is-active" data-admintab="items"><i data-lucide="package" class="mr-1 inline h-3.5 w-3.5"></i> Tambah &amp; Kelola Item</button>
+        <button type="button" class="auth-tab" data-admintab="shop"><i data-lucide="store" class="mr-1 inline h-3.5 w-3.5"></i> Lokasi Toko &amp; Ongkir</button>
+      </div>
+
+      <div id="adminTabItems" class="mt-5">
+        <form id="addItemForm" class="rounded-[24px] border border-line bg-[#FAFBFF] p-4" novalidate>
+          <p class="font-display text-[13px] font-extrabold text-ink">Tambah item baru</p>
+          <div class="mt-3 grid gap-3 sm:grid-cols-2">
+            <div>
+              <label class="lbl" for="newName">Nama item</label>
+              <input id="newName" type="text" class="field" placeholder="Contoh: Kandang lipat anak kos">
+            </div>
+            <div>
+              <label class="lbl" for="newCat">Kategori</label>
+              <select id="newCat" class="field"></select>
+            </div>
+            <div>
+              <label class="lbl" for="newPrice">Harga (Rp)</label>
+              <input id="newPrice" type="number" min="0" step="1000" class="field" placeholder="0 untuk gratis">
+            </div>
+            <div>
+              <label class="lbl" for="newDist">Jarak toko (km)</label>
+              <select id="newDist" class="field"></select>
+            </div>
+          </div>
+          <div class="mt-3 grid gap-3 sm:grid-cols-2">
+            <div>
+              <label class="lbl" for="newFit">Label kecocokan</label>
+              <select id="newFit" class="field">
+                <option>Ramah Pemula</option>
+                <option>Cocok Anak Kos</option>
+                <option>Perlu Perhatian</option>
+              </select>
+            </div>
+            <div>
+              <label class="lbl" for="newDesc">Deskripsi singkat</label>
+              <input id="newDesc" type="text" class="field" placeholder="Opsional, 1 kalimat">
+            </div>
+          </div>
+          <div class="mt-3 flex flex-wrap items-center gap-5">
+            <label class="flex items-center gap-2 text-[11.5px] font-bold text-ink"><input id="newPromo" type="checkbox" class="h-4 w-4 accent-[#1D74F5]"> Tandai Promo</label>
+            <label class="flex items-center gap-2 text-[11.5px] font-bold text-ink"><input id="newTrending" type="checkbox" class="h-4 w-4 accent-[#1D74F5]"> Tandai Trending</label>
+          </div>
+          <button type="submit" class="btn-primary mt-4 w-full !py-2.5 !text-[12.5px]"><i data-lucide="plus" class="h-4 w-4"></i> Tambah ke Katalog</button>
+        </form>
+
+        <div class="mt-4 flex items-center justify-between">
+          <p class="font-display text-[13px] font-extrabold text-ink">Item aktif</p>
+          <span id="adminItemCount" class="text-[11px] font-semibold text-muted">0 item</span>
+        </div>
+        <div id="adminItemList" class="mt-2 space-y-2"></div>
+      </div>
+
+      <div id="adminTabShop" class="hide mt-5">
+        <div class="rounded-[24px] border border-line bg-[#FAFBFF] p-4">
+          <p class="font-display text-[13px] font-extrabold text-ink">Lokasi toko &amp; tarif ongkir</p>
+          <p class="mt-1 text-[11px] text-muted">Perubahan langsung memperbarui jendela Lokasi &amp; Ongkir serta semua hitungan di katalog.</p>
+          <div class="mt-3 grid gap-3 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label class="lbl" for="shopNameInput">Nama toko</label>
+              <input id="shopNameInput" type="text" class="field">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="lbl" for="shopAddressInput">Alamat toko</label>
+              <textarea id="shopAddressInput" class="field" rows="2"></textarea>
+            </div>
+            <div>
+              <label class="lbl" for="shopBaseInput">Tarif dasar (Rp)</label>
+              <input id="shopBaseInput" type="number" min="0" step="500" class="field">
+            </div>
+            <div>
+              <label class="lbl" for="shopPerKmInput">Tarif per km (Rp)</label>
+              <input id="shopPerKmInput" type="number" min="0" step="500" class="field">
+            </div>
+          </div>
+          <div class="mt-3 rounded-2xl border border-line bg-white p-3 text-[11px] text-muted">
+            Contoh live: area <span class="font-bold text-ink" id="shopPreviewArea">5 km</span> →
+            ongkir <span class="font-extrabold text-brand" id="shopPreviewCost">Rp18.000</span>
+          </div>
+        </div>
+        <p class="mt-3 text-[10.5px] text-muted">Tips demo: ubah tarif dasar menjadi 10.000 untuk melihat seluruh estimasi ikut berubah.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ================= DATA ================= */
+  const U = (id, w) => 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=' + (w || 800) + '&q=80&fm=jpg';
+  const IMG = {
+    hero: U('1628009368231-7bb7cfcb0def', 900),
+    kittens: U('1450778869180-41d0601e046e', 320),
+    fold: U('1548247416-ec66f4900b2e'),
+    stairs: U('1495360010541-f48722b34f7d'),
+    orange: U('1573865526739-10659fec78a5'),
+    fluffy: U('1526336024174-e58f5cdd8e13'),
+    kittenTeal: U('1592194996308-7b43878e84a6'),
+    vet: U('1628009368231-7bb7cfcb0def'),
+    hoodie: U('1583337130417-3346a1be7dee'),
+    shades: U('1533738363-b7f9aef128ce'),
+    bandana: U('1543852786-1cf6624b9987'),
+    kittenBed: U('1533743983669-94fa5c4338ec'),
+    guinea: U('1548767797-d8c844163c4c'),
+    bwCat: U('1514888286974-6c03e2ca1dba')
+  };
+
+  const SERVICES = [
+    { name: 'Beli', icon: 'shopping-bag', desc: 'Hewan siap rawat' },
+    { name: 'Perawatan', icon: 'sparkles', desc: 'Grooming & vitamin' },
+    { name: 'Dokter', icon: 'stethoscope', desc: 'Konsultasi & vaksin' },
+    { name: 'Aksesoris', icon: 'shopping-basket', desc: 'Kandang & kebutuhan' },
+    { name: 'Adopsi', icon: 'heart-handshake', desc: 'Selamatkan anabul' },
+    { name: 'Memberi', icon: 'gift', desc: 'Hibah gratis' }
+  ];
+  const CATEGORIES = SERVICES.map(s => s.name);
+  const CAT_IMG = {
+    Beli: IMG.fold, Perawatan: IMG.orange, Dokter: IMG.kittenTeal,
+    Aksesoris: IMG.hoodie, Adopsi: IMG.kittenBed, Memberi: IMG.guinea
+  };
+  const ACTIONS = {
+    Beli: 'Lihat & Pesan', Aksesoris: 'Lihat & Pesan', Perawatan: 'Booking Jadwal',
+    Dokter: 'Booking Jadwal', Adopsi: 'Ajukan Adopsi', Memberi: 'Hubungi Pemilik'
+  };
+  const FIT_CLASS = { 'Ramah Pemula': 'fit-a', 'Cocok Anak Kos': 'fit-b', 'Perlu Perhatian': 'fit-c' };
+
+  const SHOP_DEFAULT = {
+    name: 'TemanPelihara Pet Corner',
+    address: 'Jl. Kemuning Raya No. 24, Kel. Cipete Utara, Jakarta Selatan 12150',
+    base: 8000,
+    perKm: 2000
+  };
+  const AREAS = [
+    { km: 2.5, label: '2,5 km \u00b7 Dalam komplek / kos sekitar' },
+    { km: 5, label: '5 km \u00b7 Kecamatan sekitar' },
+    { km: 7.5, label: '7,5 km \u00b7 Masih dalam kota' },
+    { km: 10, label: '10 km \u00b7 Lintas kecamatan' },
+    { km: 12.5, label: '12,5 km \u00b7 Pinggir kota' },
+    { km: 15, label: '15 km \u00b7 Luar kota (maksimal)' }
+  ];
+  const WA_NUMBER = '6281234567890';
+  const ADMIN_CODE = 'ADMIN2026';
+  const IG_URL = 'https://instagram.com/temanpelihara';
+  const TT_URL = 'https://www.tiktok.com/@temanpelihara';
+
+  const SEED_ITEMS = [
+    { id: 'tp-1', name: 'Kucing Scottish Fold Mix 4 Bulan', category: 'Beli', price: 2450000, originalPrice: 2900000, promo: true, trending: true, rating: 4.9, dist: 2.5, fit: 'Ramah Pemula', desc: 'Jinak, sudah terlatih litter box, dan terbiasa dengan suasana kos. Vaksin pertama lengkap.', img: IMG.fold },
+    { id: 'tp-2', name: 'Kucing Domestik Mix Vaksin Lengkap', category: 'Beli', price: 750000, originalPrice: null, promo: false, trending: false, rating: 4.8, dist: 4, fit: 'Cocok Anak Kos', desc: 'Umur 5 bulan, aktif dan ramah. Sudah vaksin F3, bebas kutu, dan suka bermain.', img: IMG.stairs },
+    { id: 'tp-3', name: 'Grooming & Spa Relaksasi Kucing', category: 'Perawatan', price: 95000, originalPrice: 120000, promo: true, trending: false, rating: 4.9, dist: 2.5, fit: 'Ramah Pemula', desc: 'Mandi, blow dry, potong kuku, dan bersih telinga oleh groomer berpengalaman.', img: IMG.orange },
+    { id: 'tp-4', name: 'Paket Mandi Kutu + Vitamin Bulu', category: 'Perawatan', price: 135000, originalPrice: null, promo: false, trending: false, rating: 4.7, dist: 5, fit: 'Cocok Anak Kos', desc: 'Perawatan bulanan anti kutu dengan sampo hypoallergenic, aman untuk kitten.', img: IMG.fluffy },
+    { id: 'tp-5', name: 'Konsultasi Chat Dokter Hewan 24 Jam', category: 'Dokter', price: 35000, originalPrice: null, promo: false, trending: true, rating: 4.9, dist: 0, online: true, fit: 'Ramah Pemula', desc: 'Tanya gejala, pola makan, sampai jadwal vaksin. Dibalas dokter berlisensi kurang dari 15 menit.', img: IMG.kittenTeal },
+    { id: 'tp-6', name: 'Vaksinasi & Cek Kesehatan di Klinik', category: 'Dokter', price: 150000, originalPrice: null, promo: false, trending: false, rating: 4.8, dist: 5, fit: 'Ramah Pemula', desc: 'Pemeriksaan menyeluruh plus vaksin F3/F4 oleh dokter mitra, termasuk buku kesehatan.', img: IMG.vet },
+    { id: 'tp-7', name: 'Sweater Rajut Hangat untuk Anabul', category: 'Aksesoris', price: 89000, originalPrice: null, promo: false, trending: false, rating: 4.6, dist: 2.5, fit: 'Cocok Anak Kos', desc: 'Bahan rajut lembut, tidak gerah, tersedia ukuran S-M. Cocok untuk kucing & anjing kecil.', img: IMG.hoodie },
+    { id: 'tp-8', name: 'Kacamata Fashion + Bandana Anabul', category: 'Aksesoris', price: 45000, originalPrice: 60000, promo: true, trending: true, rating: 4.7, dist: 2.5, fit: 'Ramah Pemula', desc: 'Set aksesori foto lucu, ringan dan tidak mengganggu mata. Bikin feed makin gemas.', img: IMG.shades },
+    { id: 'tp-9', name: 'Adopsi Kucing Jalanan Sudah Steril', category: 'Adopsi', price: 0, originalPrice: null, promo: false, trending: false, rating: 4.9, dist: 2.5, fit: 'Ramah Pemula', desc: 'Betina sekitar 1 tahun, sudah steril & vaksin. Butuh rumah tenang, cocok untuk first-time adopter.', img: IMG.bandana },
+    { id: 'tp-10', name: 'Adopsi Kitten Domestik 2 Bulan', category: 'Adopsi', price: 0, originalPrice: null, promo: false, trending: true, rating: 4.9, dist: 4, fit: 'Cocok Anak Kos', desc: 'Dua kitten jantan sehat, sudah makan wet food. Boleh diadopsi berpasangan atau terpisah.', img: IMG.kittenBed },
+    { id: 'tp-11', name: 'Hibah 2 Guinea Pig + Kandang', category: 'Memberi', price: 0, originalPrice: null, promo: false, trending: false, rating: 4.8, dist: 5, fit: 'Perlu Perhatian', desc: 'Pindah kota dan tidak bisa membawa. Kandang, alas, dan stok pakan ikut diberikan gratis.', img: IMG.guinea },
+    { id: 'tp-12', name: 'Memberi Kucing Betina Sudah Steril', category: 'Memberi', price: 0, originalPrice: null, promo: false, trending: false, rating: 5.0, dist: 7.5, fit: 'Ramah Pemula', desc: 'Umur 2 tahun, sangat manja dan tenang. Pemilik baru diharapkan bisa menjemput di rumah.', img: IMG.bwCat }
+  ];
+
+  /* ================= UTIL ================= */
+  const $ = (sel, root) => (root || document).querySelector(sel);
+  const $$ = (sel, root) => Array.prototype.slice.call((root || document).querySelectorAll(sel));
+  const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const nf = new Intl.NumberFormat('id-ID');
+  const fmt = (n) => 'Rp' + nf.format(Math.round(Number(n) || 0));
+  const fmtKm = (km) => nf.format(Number(km) || 0) + ' km';
+  const store = {
+    get(key, fallback) { try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; } catch (e) { return fallback; } },
+    set(key, value) { try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {} },
+    del(key) { try { localStorage.removeItem(key); } catch (e) {} }
+  };
+  function icons() { if (window.lucide && window.lucide.createIcons) window.lucide.createIcons(); }
+
+  const storedFavs = store.get('tp_favorites', []);
+  const savedItems = store.get('tp_items_v1', null);
+  const state = {
+    user: store.get('tp_session', null),
+    favorites: Array.isArray(storedFavs) ? storedFavs : [],
+    items: Array.isArray(savedItems) && savedItems.length ? savedItems : SEED_ITEMS.map(i => Object.assign({}, i)),
+    shop: Object.assign({}, SHOP_DEFAULT, store.get('tp_shop', {}) || {}),
+    filter: 'all', category: null, query: '', area: 2.5,
+    authMode: 'login', authRole: 'User'
+  };
+
+  function persistItems() { store.set('tp_items_v1', state.items); }
+  function persistShop() { store.set('tp_shop', state.shop); }
+
+  /* ================= ONGKIR ================= */
+  function shipCost(km) {
+    if (!km) return 0;
+    const raw = Number(state.shop.base) + Number(state.shop.perKm) * Number(km);
+    return Math.ceil(raw / 500) * 500;
+  }
+  function shipTime(km) {
+    if (!km) return { min: 10, max: 20 };
+    const min = Math.round(15 + 6 * Number(km));
+    return { min: min, max: min + 15 };
+  }
+
+  /* ================= TOAST ================= */
+  function toast(message, type) {
+    const host = $('#toastHost');
+    if (!host) return;
+    const kind = type === 'error' ? 'error' : type === 'info' ? 'info' : 'success';
+    const icon = kind === 'error' ? 'alert-triangle' : kind === 'info' ? 'info' : 'check-circle-2';
+    const el = document.createElement('div');
+    el.className = 'toast toast-' + kind;
+    el.innerHTML = '<span class="toast-icon"><i data-lucide="' + icon + '" class="h-4 w-4"></i></span>' +
+      '<p class="text-[12px] font-semibold leading-snug text-ink">' + esc(message) + '</p>';
+    host.appendChild(el);
+    icons();
+    setTimeout(function () {
+      el.classList.add('out');
+      setTimeout(function () { el.remove(); }, 260);
+    }, 3800);
+  }
+
+  /* ================= MODAL ================= */
+  function openModal(id) {
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.classList.add('is-open');
+    document.body.classList.add('overflow-hidden');
+  }
+  function closeModal(id) {
+    const m = document.getElementById(id);
+    if (!m) return;
+    m.classList.remove('is-open');
+    if (!$('.modal.is-open')) document.body.classList.remove('overflow-hidden');
+  }
+  function scrollToId(id) {
+    const el = document.getElementById(id);
+    if (el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ================= SESI & NAVBAR ================= */
+  function applyUser() {
+    const u = state.user;
+    document.body.classList.toggle('is-auth', !!u);
+    $('#authBtn').classList.toggle('hide', !!u);
+    $('#userChip').classList.toggle('hide', !u);
+    $('#footAuthBtn').classList.toggle('hide', !!u);
+    if (u) {
+      $('#userName').textContent = u.name;
+      $('#userRole').textContent = u.role === 'Admin' ? 'Admin \u00b7 Pengelola' : 'User \u00b7 Pembeli';
+      $('#userAvatar').textContent = String(u.name || 'T').trim().charAt(0).toUpperCase();
+    }
+    $$('.js-admin').forEach(function (el) { el.classList.toggle('hide', !(u && u.role === 'Admin')); });
+    $$('.js-logout').forEach(function (el) { el.classList.toggle('hide', !u); });
+  }
+  function saveSession(user) {
+    state.user = user;
+    store.set('tp_session', user);
+    applyUser();
+  }
+  function logout() {
+    state.user = null;
+    store.del('tp_session');
+    applyUser();
+    closeModal('adminModal');
+    toast('Kamu sudah keluar. Sampai jumpa lagi!', 'info');
+  }
+
+  function updateFavCount() {
+    const valid = state.favorites.filter(function (id) {
+      return state.items.some(function (i) { return i.id === id; });
+    });
+    $('#favCount').textContent = valid.length;
+  }
+
+  /* ================= RENDER: 6 PILAR ================= */
+  function renderServices() {
+    const host = $('#serviceGrid');
+    host.innerHTML = SERVICES.map(function (s) {
+      const active = state.category === s.name;
+      return '<button type="button" data-service="' + s.name + '" class="service-card' + (active ? ' is-active' : '') + '" aria-pressed="' + active + '">' +
+        '<span class="s-icon"><i data-lucide="' + s.icon + '" class="h-5 w-5"></i></span>' +
+        '<span class="font-display text-[13.5px] font-extrabold leading-none">' + s.name + '</span>' +
+        '<span class="s-desc text-[10.5px] font-medium leading-snug text-muted">' + s.desc + '</span>' +
+      '</button>';
+    }).join('');
+    icons();
+  }
+
+  /* ================= RENDER: KATALOG ================= */
+  function shipLabel(item) {
+    return item.online ? 'Online \u00b7 Bebas ongkir' : fmtKm(item.dist) + ' \u00b7 Ongkir ' + fmt(shipCost(item.dist));
+  }
+
+  function itemCard(item) {
+    const isFav = state.favorites.indexOf(item.id) !== -1;
+    const priceHtml = item.price > 0
+      ? '<span class="font-display text-[17px] font-extrabold leading-none text-ink">' + fmt(item.price) + '</span>' +
+        (item.originalPrice && item.originalPrice > item.price ? '<s class="ml-1 text-[11px] font-medium text-muted">' + fmt(item.originalPrice) + '</s>' : '')
+      : '<span class="font-display text-[17px] font-extrabold leading-none text-brand">Gratis</span>';
+
+    const badges = '<span class="tag tag-cat">' + esc(item.category) + '</span>' +
+      (item.promo ? '<span class="tag tag-promo">Promo</span>' : '') +
+      (item.trending ? '<span class="tag tag-trend"><i data-lucide="trending-up" class="h-3 w-3"></i>Trending</span>' : '');
+
+    return '<article class="item-card">' +
+      '<div class="thumb">' +
+        '<img src="' + item.img + '" alt="' + esc(item.name) + '" loading="lazy" onerror="this.onerror=null;this.src=window.TP_FALLBACK">' +
+        '<div class="absolute inset-x-0 top-0 flex items-start justify-between gap-2 p-3">' +
+          '<div class="flex flex-wrap gap-1.5">' + badges + '</div>' +
+          '<button type="button" data-fav="' + item.id + '" class="fav-btn' + (isFav ? ' is-active' : '') + '" aria-pressed="' + isFav + '" aria-label="Simpan ' + esc(item.name) + ' ke favorit">' +
+            '<i data-lucide="heart" class="h-4 w-4"></i>' +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="flex flex-1 flex-col p-4">' +
+        '<div class="flex items-center gap-2">' +
+          '<span class="fit-tag ' + (FIT_CLASS[item.fit] || 'fit-a') + '">' + esc(item.fit) + '</span>' +
+          '<span class="ml-auto flex items-center gap-1 text-[11px] font-extrabold text-ink"><span class="stars flex"><i data-lucide="star" class="h-3 w-3"></i></span>' + Number(item.rating).toFixed(1) + '</span>' +
+        '</div>' +
+        '<h3 class="mt-2 font-display text-[14.5px] font-extrabold leading-snug text-ink">' + esc(item.name) + '</h3>' +
+        '<p class="clamp-2 mt-1 text-[11.5px] leading-relaxed text-muted">' + esc(item.desc) + '</p>' +
+        '<div class="mt-3 flex items-center gap-1.5 rounded-xl bg-[#F7F9FD] px-2.5 py-2 text-[10.5px] font-semibold text-muted">' +
+          '<i data-lucide="' + (item.online ? 'message-circle' : 'map-pin') + '" class="h-3.5 w-3.5 shrink-0 text-brand"></i>' +
+          '<span class="truncate">' + shipLabel(item) + '</span>' +
+        '</div>' +
+        '<div class="mt-auto flex items-end justify-between gap-2 pt-3.5">' +
+          '<div><span class="block text-[9px] font-extrabold uppercase tracking-wider text-muted">Harga</span>' + priceHtml + '</div>' +
+          '<button type="button" data-open="' + item.id + '" class="btn-primary btn-sm">' + esc(ACTIONS[item.category] || 'Lihat Detail') + '</button>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function visibleItems() {
+    const q = state.query.trim().toLowerCase();
+    const list = state.items.filter(function (i) {
+      if (state.category && i.category !== state.category) return false;
+      if (state.filter === 'promo' && !i.promo) return false;
+      if (state.filter === 'trending' && !i.trending) return false;
+      if (state.filter === 'fav' && state.favorites.indexOf(i.id) === -1) return false;
+      if (q) {
+        const hay = (i.name + ' ' + i.desc + ' ' + i.category + ' ' + i.fit).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+    if (state.filter === 'price-asc') list.sort(function (a, b) { return a.price - b.price; });
+    if (state.filter === 'price-desc') list.sort(function (a, b) { return b.price - a.price; });
+    return list;
+  }
+
+  function renderCatalog() {
+    const list = visibleItems();
+    const grid = $('#catalogGrid');
+
+    if (!list.length) {
+      grid.innerHTML = '<div class="col-span-full rounded-[28px] border border-dashed border-line bg-[#FAFBFE] px-6 py-14 text-center">' +
+        '<span class="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#FFF1EC] text-tomato"><i data-lucide="paw-print" class="h-6 w-6"></i></span>' +
+        '<p class="mt-3 font-display text-[15px] font-extrabold text-ink">Belum ada item yang cocok</p>' +
+        '<p class="mt-1 text-[12px] text-muted">Coba kata kunci lain, atau reset filter untuk melihat semua.</p>' +
+        '<button type="button" data-reset="1" class="btn-outline mt-4 !py-2.5 !text-[12px]">Reset filter</button>' +
+      '</div>';
+    } else {
+      grid.innerHTML = list.map(itemCard).join('');
+    }
+
+    let countText = 'Menampilkan ' + list.length + ' dari ' + state.items.length + ' item';
+    if (state.category) countText += ' \u00b7 kategori ' + state.category;
+    if (state.filter === 'fav') countText += ' \u00b7 favorit kamu';
+    $('#resultCount').textContent = countText;
+
+    $$('[data-chip]').forEach(function (b) { b.classList.toggle('is-active', b.getAttribute('data-chip') === state.filter); });
+    updateFavCount();
+    icons();
+  }
+
+  /* ================= ONGKIR: UI ================= */
+  function renderAreaOptions() {
+    const sel = $('#areaSelect');
+    sel.innerHTML = AREAS.map(function (a) {
+      return '<option value="' + a.km + '"' + (a.km === state.area ? ' selected' : '') + '>' + a.label + '</option>';
+    }).join('');
+  }
+
+  function updateShippingUI() {
+    const area = state.area;
+    const cost = shipCost(area);
+    const t = shipTime(area);
+    $('#estTime').textContent = t.min + '\u2013' + t.max + ' mnt';
+    $('#estCost').textContent = fmt(cost);
+    $('#estCostSub').textContent = fmt(state.shop.base) + ' dasar + ' + fmt(state.shop.perKm * area) + ' jarak';
+    $('#tarifNote').textContent = 'Hitungan otomatis: tarif dasar ' + fmt(state.shop.base) + ' + ' + fmt(state.shop.perKm) + ' per km (jarak ' + fmtKm(area) + ').';
+    $('#storeName').textContent = state.shop.name || 'Toko temanPelihara';
+    $('#storeAddress').textContent = state.shop.address || SHOP_DEFAULT.address;
+    if ($('#shopPreviewCost')) {
+      $('#shopPreviewArea').textContent = '5 km';
+      $('#shopPreviewCost').textContent = fmt(shipCost(5));
+    }
+  }
+
+  function waLink(text) {
+    return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+
+  /* ================= FAVORIT ================= */
+  function toggleFav(id) {
+    const idx = state.favorites.indexOf(id);
+    const adding = idx === -1;
+    if (adding) state.favorites.push(id); else state.favorites.splice(idx, 1);
+    store.set('tp_favorites', state.favorites);
+    updateFavCount();
+    $$('[data-fav="' + id + '"]').forEach(function (btn) {
+      btn.classList.toggle('is-active', adding);
+      btn.setAttribute('aria-pressed', String(adding));
+    });
+    if (state.filter === 'fav') renderCatalog();
+    toast(adding ? 'Ditambahkan ke favorit. Mudah ditemukan lagi nanti!' : 'Dihapus dari daftar favorit.', adding ? 'success' : 'info');
+  }
+
+  /* ================= DETAIL ITEM ================= */
+  function openDetail(id) {
+    const item = state.items.find(function (i) { return i.id === id; });
+    if (!item) return;
+    const cost = item.online ? 0 : shipCost(item.dist);
+    const t = shipTime(item.dist);
+    const total = Number(item.price) + cost;
+    const isFav = state.favorites.indexOf(item.id) !== -1;
+
+    const badges = '<span class="tag tag-cat">' + esc(item.category) + '</span>' +
+      (item.promo ? '<span class="tag tag-promo">Promo</span>' : '') +
+      (item.trending ? '<span class="tag tag-trend"><i data-lucide="trending-up" class="h-3 w-3"></i>Trending</span>' : '');
+
+    const priceLine = item.price > 0
+      ? fmt(item.price) + (item.originalPrice && item.originalPrice > item.price ? ' <s class="text-[11px] font-medium text-muted">' + fmt(item.originalPrice) + '</s>' : '')
+      : '<span class="text-brand">Gratis</span>';
+
+    const waMsg = 'Halo temanPelihara! Saya ingin menanyakan "' + item.name + '" (' +
+      (item.price > 0 ? fmt(item.price) : 'gratis') + '). Estimasi ' +
+      (t.min + '-' + t.max + ' menit') + ' dengan ongkir ' + fmt(cost) + '. Apakah masih tersedia?';
+
+    $('#detailBody').innerHTML =
+      '<div class="relative">' +
+        '<div class="relative h-52 sm:h-64">' +
+          '<img src="' + item.img + '" alt="' + esc(item.name) + '" class="h-full w-full object-cover" onerror="this.onerror=null;this.src=window.TP_FALLBACK">' +
+          '<div class="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent"></div>' +
+          '<button type="button" class="modal-x" data-close="detailModal" aria-label="Tutup detail"><i data-lucide="x" class="h-4 w-4"></i></button>' +
+          '<div class="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-4">' +
+            '<div class="flex flex-wrap gap-1.5">' + badges + '</div>' +
+            '<button type="button" data-fav="' + item.id + '" class="fav-btn' + (isFav ? ' is-active' : '') + '" aria-pressed="' + isFav + '" aria-label="Favorit"><i data-lucide="heart" class="h-4 w-4"></i></button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="p-5 sm:p-6">' +
+          '<div class="flex flex-wrap items-center gap-2">' +
+            '<span class="fit-tag ' + (FIT_CLASS[item.fit] || 'fit-a') + '">' + esc(item.fit) + '</span>' +
+            '<span class="stars flex items-center"><i data-lucide="star" class="h-3.5 w-3.5"></i></span>' +
+            '<span class="text-[11.5px] font-extrabold text-ink">' + Number(item.rating).toFixed(1) + '</span>' +
+            '<span class="text-[11px] text-muted">dari pembeli terverifikasi</span>' +
+          '</div>' +
+          '<h2 id="detailTitle" class="mt-2 font-display text-[19px] font-extrabold leading-snug text-ink">' + esc(item.name) + '</h2>' +
+          '<p class="mt-2 text-[12.5px] leading-relaxed text-muted">' + esc(item.desc) + '</p>' +
+
+          '<div class="mt-4 grid gap-2 sm:grid-cols-2">' +
+            '<div class="info-box"><div class="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-muted"><i data-lucide="store" class="h-3.5 w-3.5 text-brand"></i> Lokasi Toko</div>' +
+              '<p class="mt-1 text-[11.5px] font-bold leading-snug text-ink">' + esc(state.shop.name) + '</p>' +
+              '<p class="mt-0.5 text-[10.5px] leading-snug text-muted">' + (item.online ? 'Layanan daring \u2014 tanpa kunjungan' : esc(state.shop.address)) + '</p></div>' +
+            '<div class="info-box"><div class="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-muted"><i data-lucide="clock" class="h-3.5 w-3.5 text-brand"></i> Estimasi Waktu</div>' +
+              '<p class="mt-1 text-[15px] font-extrabold text-ink">' + t.min + '\u2013' + t.max + ' mnt</p>' +
+              '<p class="mt-0.5 text-[10.5px] text-muted">' + (item.online ? 'Respons chat dokter' : 'Kurir khusus hewan') + '</p></div>' +
+            '<div class="info-box"><div class="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-muted"><i data-lucide="truck" class="h-3.5 w-3.5 text-tomato"></i> Estimasi Ongkir</div>' +
+              '<p class="mt-1 text-[15px] font-extrabold text-ink">' + (cost ? fmt(cost) : 'Gratis') + '</p>' +
+              '<p class="mt-0.5 text-[10.5px] text-muted">' + (item.online ? 'Tanpa pengantaran' : 'Jarak ' + fmtKm(item.dist)) + '</p></div>' +
+            '<div class="info-box"><div class="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wide text-muted"><i data-lucide="map-pin" class="h-3.5 w-3.5 text-brand"></i> Area Tujuan</div>' +
+              '<p class="mt-1 text-[15px] font-extrabold text-ink">' + (item.online ? 'Di mana saja' : fmtKm(item.dist)) + '</p>' +
+              '<p class="mt-0.5 text-[10.5px] leading-snug text-muted">' + (item.pickup ? 'Penjemputan: ' + esc(item.pickup) : 'Ganti area di bagian Lokasi & Ongkir') + '</p></div>' +
+          '</div>' +
+
+          '<div class="mt-4 rounded-2xl border border-line bg-[#F8FAFF] p-4">' +
+            '<p class="text-[10px] font-extrabold uppercase tracking-wider text-muted">Rincian pembayaran</p>' +
+            '<dl class="mt-2 space-y-1.5 text-[12px]">' +
+              '<div class="flex items-center justify-between gap-2"><dt class="text-muted">Harga item</dt><dd class="font-bold text-ink">' + priceLine + '</dd></div>' +
+              '<div class="flex items-center justify-between gap-2"><dt class="text-muted">Ongkir ' + (item.online ? '(online)' : '(' + fmtKm(item.dist) + ')') + '</dt><dd class="font-bold text-ink">' + (cost ? fmt(cost) : 'Rp0') + '</dd></div>' +
+              '<div class="mt-1 flex items-center justify-between gap-2 border-t border-line pt-2"><dt class="font-extrabold text-ink">Total</dt><dd class="font-display text-[16px] font-extrabold text-brand">' + (total > 0 ? fmt(total) : 'Gratis') + '</dd></div>' +
+            '</dl>' +
+          '</div>' +
+
+          '<div class="mt-4 grid gap-2 sm:grid-cols-2">' +
+            '<button type="button" data-confirm="' + item.id + '" class="btn-primary w-full !py-3"><i data-lucide="check-circle-2" class="h-4 w-4"></i> Konfirmasi Pesanan</button>' +
+            '<a href="' + waLink(waMsg) + '" target="_blank" rel="noopener" class="btn-outline w-full !py-3 text-center"><i data-lucide="message-circle" class="h-4 w-4 text-[#0E9F6E]"></i> Tanya via WhatsApp</a>' +
+          '</div>' +
+          '<p class="mt-2 text-center text-[10.5px] leading-relaxed text-muted">Konfirmasi pesanan wajib login. Ongkir dihitung otomatis dari jarak toko ke area tujuan.</p>' +
+        '</div>' +
+      '</div>';
+
+    openModal('detailModal');
+    icons();
+    const panel = $('#detailModal .modal-panel');
+    if (panel) panel.scrollTop = 0;
+  }
+
+  function confirmOrder(id) {
+    const item = state.items.find(function (i) { return i.id === id; });
+    if (!item) return;
+    if (!state.user) {
+      closeModal('detailModal');
+      toast('Masuk dulu ya, biar pesananmu tercatat.', 'info');
+      openAuth('login');
+      return;
+    }
+    const cost = item.online ? 0 : shipCost(item.dist);
+    toast('Pesanan "' + item.name + '" dikirim ke toko. Total ' + fmt(Number(item.price) + cost) + '.', 'success');
+    const btn = $('[data-confirm="' + id + '"]');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i data-lucide="check" class="h-4 w-4"></i> Pesanan Terkirim';
+      icons();
+    }
+  }
+
+  /* ================= LOGIN / DAFTAR ================= */
+  function setAuthMode(mode) {
+    state.authMode = mode === 'register' ? 'register' : 'login';
+    $('#nameField').classList.toggle('hide', state.authMode !== 'register');
+    $('#authSubmit').textContent = state.authMode === 'register' ? 'Daftar & Masuk' : 'Masuk';
+    $$('[data-authtab]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-authtab') === state.authMode);
+    });
+  }
+  function setAuthRole(role) {
+    state.authRole = role === 'Admin' ? 'Admin' : 'User';
+    $('#adminCodeField').classList.toggle('hide', state.authRole !== 'Admin');
+    $$('[data-role]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-role') === state.authRole);
+    });
+  }
+  function openAuth(mode) {
+    setAuthMode(mode === 'register' ? 'register' : 'login');
+    setAuthRole(state.authRole);
+    openModal('authModal');
+    icons();
+  }
+
+  function submitAuth(e) {
+    e.preventDefault();
+    const isReg = state.authMode === 'register';
+    const name = $('#authName').value.trim();
+    const contact = $('#authContact').value.trim();
+    const pass = $('#authPass').value;
+    const code = $('#authCode').value.trim().toUpperCase();
+
+    if (isReg && name.length < 2) return toast('Nama minimal 2 karakter ya.', 'error');
+    if (!contact) return toast('Email atau nomor WhatsApp wajib diisi.', 'error');
+    const validContact = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(contact) || /^[+]?[0-9][0-9\s-]{8,15}$/.test(contact);
+    if (!validContact) return toast('Format email / nomor WA belum valid.', 'error');
+    if (pass.length < 6) return toast('Kata sandi minimal 6 karakter.', 'error');
+    if (state.authRole === 'Admin' && code !== ADMIN_CODE) return toast('Kode akses admin salah. Coba ADMIN2026.', 'error');
+
+    let displayName = name;
+    if (!isReg) {
+      displayName = contact.indexOf('@') > -1
+        ? contact.split('@')[0].replace(/[._-]+/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); })
+        : 'Teman Pelihara';
+    }
+
+    saveSession({ name: displayName, contact: contact, role: state.authRole });
+    $('#authForm').reset();
+    $('#authCode').value = '';
+    setAuthRole('User');
+    setAuthMode('login');
+    closeModal('authModal');
+    toast((isReg ? 'Akun berhasil dibuat. ' : '') + 'Halo ' + displayName + '! Selamat datang di temanPelihara.', 'success');
+  }
+
+  function demoLogin(role) {
+    const isAdmin = role === 'Admin';
+    saveSession({
+      name: isAdmin ? 'Dedi Kurniawan' : 'Rani Puspita',
+      contact: isAdmin ? 'admin@temanpelihara.id' : 'rani@demo.com',
+      role: isAdmin ? 'Admin' : 'User'
+    });
+    $('#authForm').reset();
+    closeModal('authModal');
+    toast('Login demo ' + (isAdmin ? 'Admin' : 'User') + ' berhasil. ' + (isAdmin ? 'Panel Admin sudah aktif di navbar.' : 'Selamat menjelajah!'), 'success');
+  }
+
+  /* ================= FORM MEMBERI ================= */
+  function submitGive(e) {
+    e.preventDefault();
+    const name = $('#giveName').value.trim();
+    const condition = $('#giveCondition').value.trim();
+    const pickup = $('#givePickup').value.trim();
+
+    if (name.length < 3) return toast('Nama / jenis hewan minimal 3 karakter.', 'error');
+    if (condition.length < 6) return toast('Tulis kondisi / vaksin / alasan minimal 6 karakter.', 'error');
+    if (pickup.length < 4) return toast('Lokasi penjemputan wajib diisi.', 'error');
+
+    const item = {
+      id: 'give-' + Date.now(),
+      name: name,
+      category: 'Memberi',
+      price: 0,
+      originalPrice: null,
+      promo: false,
+      trending: false,
+      rating: 5.0,
+      dist: 5,
+      fit: 'Ramah Pemula',
+      desc: condition,
+      img: CAT_IMG.Memberi,
+      pickup: pickup,
+      owner: state.user ? state.user.name : 'Teman Pelihara'
+    };
+
+    state.items.unshift(item);
+    persistItems();
+    state.category = 'Memberi';
+    state.filter = 'all';
+    renderServices();
+    renderCatalog();
+    renderAdminList();
+    $('#giveForm').reset();
+    closeModal('giveModal');
+    toast('Info hibah "' + name + '" sudah tampil di katalog Memberi.', 'success');
+    scrollToId('katalog');
+  }
+
+  /* ================= PANEL ADMIN ================= */
+  function openAdmin() {
+    if (!state.user || state.user.role !== 'Admin') {
+      toast('Panel Admin hanya untuk pengelola toko. Masuk sebagai Admin dulu ya.', 'error');
+      openAuth('login');
+      setAuthRole('Admin');
+      return;
+    }
+    syncShopForm();
+    renderAdminList();
+    setAdminTab('items');
+    openModal('adminModal');
+    icons();
+  }
+
+  function setAdminTab(tab) {
+    const isItems = tab !== 'shop';
+    $('#adminTabItems').classList.toggle('hide', !isItems);
+    $('#adminTabShop').classList.toggle('hide', isItems);
+    $$('[data-admintab]').forEach(function (b) {
+      b.classList.toggle('is-active', (b.getAttribute('data-admintab') === 'shop') !== isItems);
+    });
+    icons();
+  }
+
+  function syncShopForm() {
+    $('#shopNameInput').value = state.shop.name;
+    $('#shopAddressInput').value = state.shop.address;
+    $('#shopBaseInput').value = state.shop.base;
+    $('#shopPerKmInput').value = state.shop.perKm;
+    updateShippingUI();
+  }
+
+  function renderAdminList() {
+    const host = $('#adminItemList');
+    if (!host) return;
+    host.innerHTML = state.items.map(function (i) {
+      const price = i.price > 0 ? fmt(i.price) : 'Gratis';
+      return '<div class="flex items-center gap-3 rounded-2xl border border-line bg-white p-2.5">' +
+        '<img src="' + i.img + '" alt="" class="h-11 w-11 flex-none rounded-xl object-cover" onerror="this.onerror=null;this.src=window.TP_FALLBACK">' +
+        '<div class="min-w-0 flex-1">' +
+          '<p class="truncate text-[12px] font-bold text-ink">' + esc(i.name) + '</p>' +
+          '<p class="text-[10.5px] text-muted">' + esc(i.category) + ' \u00b7 ' + price + ' \u00b7 ' + fmtKm(i.dist) + '</p>' +
+        '</div>' +
+        '<button type="button" data-promo="' + i.id + '" class="mini-toggle' + (i.promo ? ' is-on' : '') + '" aria-pressed="' + i.promo + '">' + (i.promo ? 'Promo aktif' : 'Jadikan promo') + '</button>' +
+        '<button type="button" data-del="' + i.id + '" class="grid h-8 w-8 flex-none place-items-center rounded-full bg-[#FFF1EC] text-tomato transition hover:bg-[#FFE2DA]" aria-label="Hapus ' + esc(i.name) + '"><i data-lucide="trash-2" class="h-4 w-4"></i></button>' +
+      '</div>';
+    }).join('') || '<p class="rounded-2xl border border-dashed border-line p-4 text-center text-[11.5px] text-muted">Belum ada item di katalog.</p>';
+    $('#adminItemCount').textContent = state.items.length + ' item';
+    icons();
+  }
+
+  function addItem(e) {
+    e.preventDefault();
+    const name = $('#newName').value.trim();
+    const category = $('#newCat').value;
+    const price = Math.max(0, Number($('#newPrice').value) || 0);
+    const dist = Number($('#newDist').value) || 2.5;
+    const fit = $('#newFit').value;
+    const desc = $('#newDesc').value.trim() || 'Item baru dari admin toko. Tanyakan detail lewat WhatsApp, ya.';
+    const promo = $('#newPromo').checked;
+    const trending = $('#newTrending').checked;
+
+    if (name.length < 3) return toast('Nama item minimal 3 karakter.', 'error');
+
+    state.items.unshift({
+      id: 'adm-' + Date.now(),
+      name: name,
+      category: category,
+      price: price,
+      originalPrice: promo && price > 0 ? Math.round(price * 1.2 / 1000) * 1000 : null,
+      promo: promo,
+      trending: trending,
+      rating: 4.8,
+      dist: dist,
+      fit: fit,
+      desc: desc,
+      img: CAT_IMG[category] || IMG.fold
+    });
+    persistItems();
+    renderCatalog();
+    renderAdminList();
+    $('#addItemForm').reset();
+    $('#newCat').value = category;
+    toast('"' + name + '" ditambahkan ke katalog ' + category + '.', 'success');
+  }
+
+  function togglePromo(id) {
+    const item = state.items.find(function (i) { return i.id === id; });
+    if (!item) return;
+    item.promo = !item.promo;
+    if (item.promo && item.price > 0 && !item.originalPrice) {
+      item.originalPrice = Math.round(item.price * 1.2 / 1000) * 1000;
+    }
+    if (!item.promo) item.originalPrice = null;
+    persistItems();
+    renderAdminList();
+    renderCatalog();
+    toast(item.promo ? 'Item ditandai sebagai promo.' : 'Label promo dihapus.', 'info');
+  }
+
+  function deleteItem(id) {
+    const item = state.items.find(function (i) { return i.id === id; });
+    if (!item) return;
+    state.items = state.items.filter(function (i) { return i.id !== id; });
+    state.favorites = state.favorites.filter(function (f) { return f !== id; });
+    persistItems();
+    store.set('tp_favorites', state.favorites);
+    renderCatalog();
+    renderAdminList();
+    toast('"' + item.name + '" dihapus dari katalog.', 'info');
+  }
+
+  function onShopInput() {
+    state.shop.name = $('#shopNameInput').value;
+    state.shop.address = $('#shopAddressInput').value;
+    state.shop.base = Math.max(0, Number($('#shopBaseInput').value) || 0);
+    state.shop.perKm = Math.max(0, Number($('#shopPerKmInput').value) || 0);
+    persistShop();
+    updateShippingUI();
+    renderCatalog();
+  }
+
+  /* ================= EVENT ================= */
+  document.addEventListener('click', function (e) {
+    const target = e.target;
+    if (!target || !target.closest) return;
+
+    const fav = target.closest('[data-fav]');
+    if (fav) { toggleFav(fav.getAttribute('data-fav')); return; }
+
+    const open = target.closest('[data-open]');
+    if (open) { openDetail(open.getAttribute('data-open')); return; }
+
+    const confirm = target.closest('[data-confirm]');
+    if (confirm) { confirmOrder(confirm.getAttribute('data-confirm')); return; }
+
+    const service = target.closest('[data-service]');
+    if (service) {
+      const name = service.getAttribute('data-service');
+      state.category = state.category === name ? null : name;
+      renderServices();
+      renderCatalog();
+      scrollToId('katalog');
+      return;
+    }
+
+    const chip = target.closest('[data-chip]');
+    if (chip) {
+      const key = chip.getAttribute('data-chip');
+      state.filter = (key !== 'all' && state.filter === key) ? 'all' : key;
+      if (key === 'all' || state.filter === 'all') state.category = null;
+      renderServices();
+      renderCatalog();
+      return;
+    }
+
+    if (target.closest('[data-reset]')) {
+      state.filter = 'all';
+      state.category = null;
+      state.query = '';
+      const inp = $('#searchInput');
+      if (inp) inp.value = '';
+      $('#clearSearch').classList.add('hide');
+      renderServices();
+      renderCatalog();
+      return;
+    }
+
+    const scrollEl = target.closest('[data-scroll]');
+    if (scrollEl) { scrollToId(scrollEl.getAttribute('data-scroll')); return; }
+
+    const closer = target.closest('[data-close]');
+    if (closer) { closeModal(closer.getAttribute('data-close')); return; }
+
+    const authTab = target.closest('[data-authtab]');
+    if (authTab) { setAuthMode(authTab.getAttribute('data-authtab')); icons(); return; }
+
+    const roleBtn = target.closest('[data-role]');
+    if (roleBtn) { setAuthRole(roleBtn.getAttribute('data-role')); icons(); return; }
+
+    const demo = target.closest('[data-demo]');
+    if (demo) { demoLogin(demo.getAttribute('data-demo')); return; }
+
+    const adminTab = target.closest('[data-admintab]');
+    if (adminTab) { setAdminTab(adminTab.getAttribute('data-admintab')); return; }
+
+    const promoBtn = target.closest('[data-promo]');
+    if (promoBtn) { togglePromo(promoBtn.getAttribute('data-promo')); return; }
+
+    const delBtn = target.closest('[data-del]');
+    if (delBtn) { deleteItem(delBtn.getAttribute('data-del')); return; }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    const openModals = $$('.modal.is-open');
+    if (openModals.length) {
+      openModals[openModals.length - 1].classList.remove('is-open');
+      if (!$('.modal.is-open')) document.body.classList.remove('overflow-hidden');
+    }
+  });
+
+  function bindStaticEvents() {
+    const authBtn = $('#authBtn');
+    if (authBtn) authBtn.addEventListener('click', function () { openAuth('login'); });
+    const footAuth = $('#footAuthBtn');
+    if (footAuth) footAuth.addEventListener('click', function () { openAuth('login'); });
+
+    $$('.js-logout').forEach(function (b) { b.addEventListener('click', logout); });
+
+    const adminBtns = ['#adminBtn', '#adminBtnMobile'];
+    adminBtns.forEach(function (sel) {
+      const b = $(sel);
+      if (b) b.addEventListener('click', openAdmin);
+    });
+
+    const favBtn = $('#favBtn');
+    if (favBtn) favBtn.addEventListener('click', function () {
+      state.filter = 'fav';
+      state.category = null;
+      renderServices();
+      renderCatalog();
+      scrollToId('katalog');
+      if (!state.favorites.length) toast('Belum ada favorit. Tekan ikon hati di kartu item untuk menyimpannya.', 'info');
+    });
+
+    const menuBtn = $('#menuBtn');
+    if (menuBtn) menuBtn.addEventListener('click', function () {
+      const menu = $('#mobileMenu');
+      const willOpen = menu.classList.contains('hide');
+      menu.classList.toggle('hide', !willOpen);
+      menuBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+    $$('#mobileMenu a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        $('#mobileMenu').classList.add('hide');
+        $('#menuBtn').setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    ['#heroGiveBtn', '#giveBtnTop'].forEach(function (sel) {
+      const b = $(sel);
+      if (b) b.addEventListener('click', function () { openModal('giveModal'); icons(); });
+    });
+
+    const search = $('#searchInput');
+    if (search) search.addEventListener('input', function () {
+      state.query = search.value;
+      $('#clearSearch').classList.toggle('hide', !search.value);
+      renderCatalog();
+    });
+    const clearBtn = $('#clearSearch');
+    if (clearBtn) clearBtn.addEventListener('click', function () {
+      search.value = '';
+      state.query = '';
+      clearBtn.classList.add('hide');
+      search.focus();
+      renderCatalog();
+    });
+
+    const area = $('#areaSelect');
+    if (area) area.addEventListener('change', function () {
+      state.area = Number(area.value) || 2.5;
+      updateShippingUI();
+      toast('Estimasi ongkir ke area ' + fmtKm(state.area) + ' diperbarui.', 'info');
+    });
+
+    const authForm = $('#authForm');
+    if (authForm) authForm.addEventListener('submit', submitAuth);
+    const giveForm = $('#giveForm');
+    if (giveForm) giveForm.addEventListener('submit', submitGive);
+    const addForm = $('#addItemForm');
+    if (addForm) addForm.addEventListener('submit', addItem);
+
+    ['#shopNameInput', '#shopAddressInput', '#shopBaseInput', '#shopPerKmInput'].forEach(function (sel) {
+      const el = $(sel);
+      if (el) el.addEventListener('input', onShopInput);
+    });
+  }
+
+  /* ================= INIT ================= */
+  function init() {
+    const waWelcome = 'Halo temanPelihara! Saya mau tanya soal adopsi, perawatan, dan perlengkapan anabul 🐾';
+    if ($('#barWa')) $('#barWa').href = waLink(waWelcome);
+    if ($('#footWa')) $('#footWa').href = waLink(waWelcome);
+
+    if ($('#newCat')) $('#newCat').innerHTML = CATEGORIES.map(function (c) { return '<option>' + c + '</option>'; }).join('');
+    if ($('#newDist')) $('#newDist').innerHTML = AREAS.map(function (a) { return '<option value="' + a.km + '">' + a.label + '</option>'; }).join('');
+
+    renderServices();
+    renderAreaOptions();
+    renderCatalog();
+    renderAdminList();
+    updateShippingUI();
+    applyUser();
+    setAuthMode('login');
+    setAuthRole('User');
+    bindStaticEvents();
+    icons();
+
+    if (!state.user) {
+      setTimeout(function () {
+        if (!$('.modal.is-open')) openAuth('login');
+      }, 900);
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
